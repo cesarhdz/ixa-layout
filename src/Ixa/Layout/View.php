@@ -9,10 +9,8 @@ class View{
 	static $ext = '.php';
 
 	function __construct($basePath, $view){
-
 		$this->basePath = $basePath;
 		$this->view = $view;
-
 	}
 
 	function getContent(){
@@ -24,5 +22,10 @@ class View{
 		return $this->basePath . $this->view . self::$ext;
 	}
 
+	function load(){
+		//@TODO Add to Dependency Injection
+		$buffer = new Buffer($this->getFullPath());
 
+		$this->content = $buffer->load();
+	}
 }
