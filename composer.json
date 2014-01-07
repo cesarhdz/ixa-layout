@@ -1,0 +1,16 @@
+{
+    "name": "ixa/layout",
+    "description": "WordPress utility to make layouts possible",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cesar Hernandez",
+            "email": "mrshortcuts@gmail.com"
+        }
+    ],
+    "require-dev": {
+    },
+    "autoload":{
+        "psr-0": {"Ixa\\": "src/"}
+    }
+}
