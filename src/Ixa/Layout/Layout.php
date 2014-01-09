@@ -1,23 +1,25 @@
 <?php namespace Ixa\Layout;
 
 /**
- * File Loader
+ * Layout
  *
- * Helper class that allows loading files
- * is ready to implement Mustache_Loader interface
- * so we can have control over loading partials
- * 
  */
 class Layout
 {
-	protected $name;
 	protected $dirs;
+	
+	protected $name;
 	protected $path;
 
 	const DEFAULT_NAME = 'default';
 
-	function __construct($dirs = array()){
-		$this->dirs = $dirs;
+	function __construct($name, $dirs = array()){
+		if(is_string($name) && $name)
+			$this->setName($name);
+
+		$dirs = (is_array($name)) ? $name : $dirs;
+
+		$this->setDirs($dirs);
 	}
 
 
@@ -32,15 +34,14 @@ class Layout
 		return $this->path;
 	}
 
+	function setDirs(array $dirs){
+		$this->dirs = $dirs;
+	}
+
 	protected function getPossibleNames(){
-		$names = array();
-
-		if(isset($this->name))
-			$names[] = $this->name;
-
-		$names[] = static::DEFAULT_NAME;
-
-		return $names;
+		return (isset($this->name)) 
+			? array($this->name, static::DEFAULT_NAME)
+			: array(static::DEFAULT_NAME);
 	}
 
 
