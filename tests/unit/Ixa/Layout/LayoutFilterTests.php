@@ -1,6 +1,6 @@
 <?php namespace Ixa\Layout;
 
-class LayoutTests extends \PHPUnit_Framework_TestCase
+class LayoutFilterTests extends \PHPUnit_Framework_TestCase
 {
 
 	var $viewBasic;
@@ -10,18 +10,18 @@ class LayoutTests extends \PHPUnit_Framework_TestCase
 	}
 
 	function testLayoutLoadView(){
-		Layout::apply($this->viewBasic);
+		LayoutFilter::apply($this->viewBasic);
 
 
-		$this->assertInstanceOf('Ixa\Layout\View', Layout::getView());
+		$this->assertInstanceOf('Ixa\Layout\View', LayoutFilter::getView());
 
 	}
 
 	function testNewPathIsAValidFile(){
-		Layout::addDir(SAMPLE_DIR . 'layouts/');
-		Layout::setName('custom');
+		LayoutFilter::addDir(SAMPLE_DIR . 'layouts/');
+		LayoutFilter::setName('custom');
 
-		$newPath = Layout::getPath();
+		$newPath = LayoutFilter::getPath();
 		
 		$this->assertNotNull($newPath, "Must return a Path");
 		$this->assertFileExists($newPath);

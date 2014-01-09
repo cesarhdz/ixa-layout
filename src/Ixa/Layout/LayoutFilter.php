@@ -8,16 +8,17 @@
  * so we can have control over loading partials
  * 
  */
-class Layout
+class LayoutFilter
 {
 	protected static $view;
+	protected static $layout;
 	
-	protected static $name;
 	protected static $dirs = array();
 
-	const DEFAULT_LAYOUT = 'default';
-
 	static function apply($viewPath){
+		// Initialize layout
+		static::initLayout();
+		
 		// Save View
 		static::setView($viewPath);
 
@@ -28,6 +29,10 @@ class Layout
 		return static::getPath();
 	}
 
+	protected static function initLayout(){
+		static::$layout = new Layout(static::$dirs);
+	}
+
 	static function setView($view){
 		static::$view = new View($view);
 	}
@@ -36,47 +41,24 @@ class Layout
 		return static::$view;
 	}
 
-	static function setPath($path){
-		static::$path = $path;
-	}
-
 	static function setName($name){
-		static::$name = $name;
+		if(static::$layout){
+			static::initLayout();
+		}
+
+		static::$layout->setName($name);
 	}
 
 	
 	static function getViewContent(){
-		if(static::$view){
-			return static::$view->getContent();
-		}
+		return (static::$view) ? static::$view->getContent() : null;
 	}
-
 
 	static function addDir($dir){
 		static::$dirs[] = $dir;
 	}
 
 	static function getPath(){
-		$names = static::getPossibleNames();
-
-		foreach ($names as $name) {
-			$layout = new LayoutLocator($name, static::$dirs);
-
-			if($layout->exists($layout)){
-				return $layout->getPath();
-			}
-		}
-	}
-
-
-	protected static function getPossibleNames(){
-		$names = array();
-
-		if(isset(static::$name))
-			$names[] = static::$name;
-
-		$names[] = static::DEFAULT_LAYOUT;
-
-		return $names;
+		return (static::$layout) ? static::$layout->getPath() : null;
 	}
 }
