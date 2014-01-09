@@ -17,12 +17,13 @@ class LayoutTests extends \PHPUnit_Framework_TestCase
 
 	}
 
-	function testLayoutRetunsNewPath(){
-		$newPath = Layout::apply($this->viewBasic);
+	function testNewPathIsAValidFile(){
+		Layout::addDir(SAMPLE_DIR . 'layouts/');
+		Layout::setName('custom');
 
+		$newPath = Layout::getPath();
+		
 		$this->assertNotNull($newPath, "Must return a Path");
-		$this->assertTrue(is_string($newPath), "The new Path must be a string");
-		$this->assertNotEquals($this->viewBasic, $newPath, "the new path is different than the view path");
+		$this->assertFileExists($newPath);
 	}
-
 }
