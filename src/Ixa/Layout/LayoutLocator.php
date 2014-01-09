@@ -10,16 +10,16 @@
  */
 class LayoutLocator
 {
-	protected $customDirs;
+	protected $dirs;
 	protected $layout;
 
 	protected $path;
 
 	const DEFAULT_FOLDER = 'layouts';
 
-	function __construct($layout, $customDirs = array()){
+	function __construct($layout, $dirs = array()){
 		$this->layout = $layout;
-		$this->customDirs = $customDirs;
+		$this->dirs = $dirs;
 
 		$this->find();
 	}
@@ -32,22 +32,8 @@ class LayoutLocator
 		return $this->path;
 	}
 
-	function getPaths(){
-		$paths = array();
-
-		if(function_exists("get_stylesheet_directory"))
-			$paths[] = get_stylesheet_directory() . static::DEFAULT_FOLDER;
-
-
-		if(is_array($this->customDirs) && count($this->customDirs))
-			$paths = array_merge($paths, $this->customDirs);
-
-		return $paths;
-	}
-
-
 	private function find(){
-		foreach ($this->getPaths() as $dir) {
+		foreach ($this->dirs as $dir) {
 			$path = $dir . '/' . $this->layout . '.php';
 
 			if(is_readable($path)){
