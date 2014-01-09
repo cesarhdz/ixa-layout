@@ -1,6 +1,6 @@
 <?php
 
-require dirname(__FILE__) . '/../vendor/autoload.php';
+require dirname(__FILE__) . '/../layout.php';
 
 
 define('SAMPLE_DIR', dirname(__FILE__) . '/sample/');
