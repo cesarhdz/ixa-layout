@@ -3,14 +3,10 @@
 class View{
 
 	protected $content;
-	protected $basePath;
-	protected $view;
+	protected $path;
 
-	static $ext = '.php';
-
-	function __construct($basePath, $view){
-		$this->basePath = $basePath;
-		$this->view = $view;
+	function __construct($path){
+		$this->path = $path;
 	}
 
 	function getContent(){
@@ -18,13 +14,9 @@ class View{
 	}
 
 
-	function getFullPath(){
-		return $this->basePath . $this->view . self::$ext;
-	}
-
 	function load(){
 		//@TODO Add to Dependency Injection
-		$buffer = new Buffer($this->getFullPath());
+		$buffer = new Buffer($this->path);
 
 		$this->content = $buffer->load();
 	}
