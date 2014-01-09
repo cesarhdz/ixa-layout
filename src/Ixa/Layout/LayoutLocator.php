@@ -6,7 +6,7 @@
  * Helper class that allows loading files
  * is ready to implement Mustache_Loader interface
  * so we can have control over loading partials
- * 
+ * @deprecated Layout can handle by itself
  */
 class LayoutLocator
 {

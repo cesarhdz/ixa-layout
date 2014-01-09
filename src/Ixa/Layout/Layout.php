@@ -12,6 +12,7 @@ class Layout
 {
 	protected $name;
 	protected $dirs;
+	protected $path;
 
 	const DEFAULT_NAME = 'default';
 
@@ -26,16 +27,9 @@ class Layout
 
 
 	function getPath(){
-		$names = $this->getPossibleNames();
+		if(!$this->path) $this->guessPath();
 
-
-		foreach ($names as $name) {
-			$layout = new LayoutLocator($name, $this->dirs);
-
-			if($layout->exists($layout)){
-				return $layout->getPath();
-			}
-		}
+		return $this->path;
 	}
 
 	protected function getPossibleNames(){
@@ -47,5 +41,25 @@ class Layout
 		$names[] = static::DEFAULT_NAME;
 
 		return $names;
+	}
+
+
+	protected function guessPath(){
+		foreach ($this->dirs as $dir) {
+			if($this->findLayoutInDir($dir)) return;
+		}
+	}
+
+
+	protected function findLayoutInDir($dir){
+		foreach ($this->getPossibleNames() as $name) {
+			$path = $dir . '/' . $name . '.php';
+
+			// If we find the layout, we set the path
+			if(is_readable($path)){
+				$this->path = $path;
+				return true;
+			}
+		}
 	}
 }
