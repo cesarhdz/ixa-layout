@@ -26,7 +26,13 @@ class LayoutFilter
 		static::$view->load();
 
 		// Return path to new layout
-		return static::getPath();
+		$path = static::getPath();
+
+		// No $layout thorw new Exception
+		if(! $path) throw new LayoutNotFoundException(static::$dirs);
+
+		// Finelly return the path that will load the filter
+		return $path;
 	}
 
 	protected static function initLayout(){
@@ -56,6 +62,10 @@ class LayoutFilter
 
 	static function addDir($dir){
 		static::$dirs[] = $dir;
+	}
+
+	static function resetDirs(){
+		static::$dirs = array();
 	}
 
 	static function getPath(){
