@@ -1,6 +1,7 @@
 {
     "name": "ixa/layout",
-    "description": "WordPress utility to make layouts possible",
+    "description": "WordPress utility to use simple layouts",
+    "keywords": ["wordpress", "layout", "wordpress-plugin"],
     "license": "MIT",
     "authors": [
         {
@@ -8,7 +9,8 @@
             "email": "mrshortcuts@gmail.com"
         }
     ],
-    "require-dev": {
+    "require": {
+        "php": ">=5.3"
     },
     "autoload":{
         "psr-0": {"Ixa\\": "src/"}
