@@ -1,6 +1,7 @@
 {
     "name": "ixa/layout",
-    "description": "WordPress utility to use simple layouts",
+    "type": "library",
+    "description": "WordPress library that provides basic support to use layouts in themes",
     "keywords": ["wordpress", "layout", "wordpress-plugin"],
     "license": "MIT",
     "authors": [
