@@ -22,7 +22,7 @@ Require as dependency in `composer.json`
 
 And register the filter in `<your-theme>/functions.php` file:
 
-    Ixa/Layout/LayoutFilter::register();
+    Ixa\Layout\LayoutFilter::apply();
 
 After registering the filter you can decorate your [views](#views) with [layouts](#layouts).
 

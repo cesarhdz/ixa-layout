@@ -71,4 +71,15 @@ class LayoutFilter
 	static function getPath(){
 		return (static::$layout) ? static::$layout->getPath() : null;
 	}
+
+	
+	/**
+	 * Register layout functionality as hook in WordPress
+	 * 
+	 * @return [type] [description]
+	 */
+	static function register(){
+		if(function_exists('add_filter'))
+			add_filter( 'template_include', array('Ixa\Layout\LayoutFilter', 'apply'), 1);
+	}
 }
