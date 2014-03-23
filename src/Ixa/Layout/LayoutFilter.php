@@ -10,6 +10,9 @@
  */
 class LayoutFilter
 {
+
+	const VERSION = '0.2';
+
 	protected static $view;
 	protected static $layout;
 	
@@ -78,7 +81,18 @@ class LayoutFilter
 	 * 
 	 * @return [type] [description]
 	 */
-	static function register(){
+	static function register($dir = 'layouts'){
+		
+		// require helper dirs
+		require_once __DIR__ . '/../../layout_helper.php';
+
+
+		// Dris must bu wrapped in slashes
+		$dir = '/' . trim($dir, '/') . '/';
+
+		// Adds stylessheetdir + layouts folder
+		static::addDir(get_stylesheet_directory() . $dir);
+
 		if(function_exists('add_filter'))
 			add_filter( 'template_include', array('Ixa\Layout\LayoutFilter', 'apply'), 1);
 	}
