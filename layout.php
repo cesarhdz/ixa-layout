@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Layout
-Version: 0.1-alpha
+Version: 0.1.1
 Description: Simple layout features added to WordPress
 Author: Cesar Hernandez
 Author URI: http://cesarhdz.com 
