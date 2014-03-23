@@ -17,14 +17,14 @@ Require as dependency in `composer.json`
 
     "require": {
         ...
-        "ixa/layout" : "`0.1"
+        "ixa/layout" : "0.2"
     } 
 
 And register the filter in `<your-theme>/functions.php` file:
 
-    Ixa\Layout\LayoutFilter::apply();
+    Ixa\Layout\LayoutFilter::register();
 
-After registering the filter you can decorate your [views](#views) with [layouts](#layouts).
+After registering the filter you can decorate your [views](#views) with [layouts](#layouts). By default layout folder is `<your-theme>/layouts`, it can be changed using the first parameter: `LayoutFilter::register($customDir)`.
 
 ## Views 
 
