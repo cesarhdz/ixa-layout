@@ -17,7 +17,7 @@ Require as dependency in `composer.json`
 
     "require": {
         ...
-        "ixa/layout" : "0.2"
+        "ixa/layout" : "0.3"
     } 
 
 And register the filter in `<your-theme>/functions.php` file:
