@@ -77,11 +77,11 @@ A tipical layout would be:
 
 All layouts must be placed under <your-theme>/layouts folder. default.php layout is requiered since is the fallback in case selected layout is not found.
 
-Within a view we can set the layout we want to apply using `set_layout()` function. The first parameter is the relative path, without extension of the layout:
+Within a view we can set the layout we want to apply using `layout()` function. The first parameter is the relative path, without extension of the layout:
 
-    set_layout('services')
+    layout('services')
 
-Ixa Layout Will try to load `<your-theme>/layouts/services.php` file, if it doesn't exists will fallback to  `<your-theme>/layouts/default.php`. In case no layout is found an `Ixa/Layout/LayoutNotFoundException` wil be raised.
+Ixa Layout Will try to load `<your-theme>/layouts/services.php` file, if it doesn't exists will fallback to  `<your-theme>/layouts/default.php`. In case no layout is found an `Ixa/Layout/LayoutNotFoundException` wil be thrown.
 
 
 ## How _Ixa Layout_ works
