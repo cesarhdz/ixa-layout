@@ -1,6 +1,7 @@
 <?php
 
-require dirname(__FILE__) . '/../layout.php';
+require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../src/layout_helper.php';
 
 
 define('SAMPLE_DIR', dirname(__FILE__) . '/sample/');
