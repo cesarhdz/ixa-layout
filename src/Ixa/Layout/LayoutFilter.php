@@ -11,7 +11,7 @@
 class LayoutFilter
 {
 
-	const VERSION = '0.3';
+	const VERSION = '0.3.1';
 
 	protected static $view;
 	protected static $layout;
