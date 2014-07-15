@@ -86,11 +86,11 @@ Ixa Layout Will try to load `<your-theme>/layouts/services.php` file, if it does
 
 ## How _Ixa Layout_ works
 
-Ixa Layout is a filter attached to `template_redirect`, it loads and saves the view selected by WordPress followig template hierarchy and returns the path to the layout that WordPress loads.
+Ixa Layout is a filter attached to `template_include` with a priority of `10000` in order to be run after all filters, then loads and saves the view selected by WordPress following template hierarchy and returns the path to the layout that WordPress loads.
 
-Ixa Layout isn't a plugin that's why it requires to be autoloaded by Composer and registered in your `functions.php` file. This way we can have consistent code across environments.
+Ixa Layout isn't a plugin that's why it requires to be autoloaded by Composer and registered in your `functions.php` file. This way we can have consistent code across environments because we don't have to wait the user to activate the plugin.
  
 
 ## Development status
 
-It's not fully tested and may collapse with plugins or themes that use `template_redirect` filter or `ob_get_contents()` function.
+It's not fully tested and may collapse with plugins or themes that use `template_include` filter or `ob_get_contents()` function.

@@ -11,7 +11,7 @@
 class LayoutFilter
 {
 
-	const VERSION = '0.3';
+	const VERSION = '0.3.1';
 
 	protected static $view;
 	protected static $layout;
@@ -94,6 +94,6 @@ class LayoutFilter
 		static::addDir(get_stylesheet_directory() . $dir);
 
 		if(function_exists('add_filter'))
-			add_filter( 'template_include', array('Ixa\Layout\LayoutFilter', 'apply'), 1);
+			add_filter( 'template_include', array('Ixa\Layout\LayoutFilter', 'apply'), 10000);
 	}
 }
