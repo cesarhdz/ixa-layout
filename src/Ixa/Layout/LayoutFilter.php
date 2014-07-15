@@ -94,6 +94,6 @@ class LayoutFilter
 		static::addDir(get_stylesheet_directory() . $dir);
 
 		if(function_exists('add_filter'))
-			add_filter( 'template_include', array('Ixa\Layout\LayoutFilter', 'apply'), 1);
+			add_filter( 'template_include', array('Ixa\Layout\LayoutFilter', 'apply'), 10000);
 	}
 }
